@@ -7,4 +7,6 @@ RUN chmod +x /usr/local/bin/init_superset.sh
 
 USER superset
 
+EXPOSE 8080
+
 CMD ["init_superset.sh"]
