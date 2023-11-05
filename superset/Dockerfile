@@ -1,12 +1,17 @@
 FROM apache/superset:2.0.0
 
-USER root
-
-COPY init_superset.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/init_superset.sh
-
-USER superset
+ENV SUPERSET_SECRET_KEY="qaMnUCm44v7DHmMChzyT1LL9SNuf6Kwx9QFPFWxVQiYZeRSs83UwEbQ7"
 
 EXPOSE 8080
 
-CMD ["init_superset.sh"]
+RUN superset fab create-admin \
+    --username admin \
+    --firstname Superset \
+    --lastname Admin \
+    --email admin@superset.com \
+    --password admin;
+
+RUN superset db upgrade
+
+RUN superset init
+
