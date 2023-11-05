@@ -1,7 +1,10 @@
 FROM apache/superset:2.0.0
 
-COPY init_superset.sh /usr/local/bin/
+USER root
 
+COPY init_superset.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init_superset.sh
+
+USER superset
 
 CMD ["init_superset.sh"]
