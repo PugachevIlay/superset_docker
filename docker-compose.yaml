@@ -1,7 +1,7 @@
 version: '3'
 services:
   superset:
-    image: superset
+    image: iliapugachev/superset:latest
     container_name: superset
     environment:
       SUPERSET_SECRET_KEY: qaMnUCm44v7DHmMChzyT1LL9SNuf6Kwx9QFPFWxVQiYZeRSs83UwEbQ7
